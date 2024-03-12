@@ -1,0 +1,169 @@
+ * {
+    margin: 0;
+    padding: 0;
+    /* border: 1px solid yellow; */
+ }
+
+ body {
+    /* border: 3px solid red; */
+    background-color: hsl(233, 47%, 7%);
+    padding: 0 20px;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.outer-container {
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+header {
+    min-height:250px;
+    min-width: 335px;
+    background-image:
+    /* linear-gradient(rgba(0,0,0,0.2),rgba(0,0,0,0.2)),  */
+    linear-gradient(hsla(277, 100%, 40%, 0.5), hsla(277, 100%, 40%, 0.5)),
+    /* is changing the colour the correct way?, originally hsl(277, 64%, 61%) */
+    url(./images/image-header-mobile.jpg);
+    background-size: cover;
+    background-color: hsl(244, 38%, 16%);
+
+}
+img {
+    max-width: 100%;
+    /* would you use cover image coz same issue of slight white underneath? */
+}
+main {
+    /* border: 2px solid green; */
+    /* display: grid; 
+    grid-template-columns: 1fr; */
+    background-color: hsl(244, 38%, 16%);
+    justify-content: center;
+    text-align: center;
+    font-size: 0.94rem;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+h1 {
+    font-family: "Inter", sans-serif;
+    font-weight: 700;  
+    font-size: 1.75rem;
+}
+h1, p {
+    color: white;
+}
+
+article {
+    line-height: 1.75rem;
+}
+
+p {
+    font-family: "Lexend Deca", sans-serif;
+    font-weight: 400;
+}
+.large-text {
+    font-size: 1.25rem;
+}
+.highlight-violet {
+    color: hsl(277, 64%, 61%);
+}
+
+.stats .light-text {
+    text-transform: uppercase;
+}
+.stats .large-text, .stats .light-text {
+    display: block;
+    /* try this instead of flexbox */
+}
+p {
+    color: hsla(0, 0%, 100%, 0.6);
+}
+
+.large-text {
+    color: hsl(0, 0%, 100%);
+    font-family: "Inter", sans-serif;
+    font-weight: 700;
+}
+
+.stats .light-text {
+    font-size: 0.75rem;
+}
+.stats span {
+    margin: 5px 0;
+}
+.large-m {
+    text-transform: uppercase;
+}
+
+
+
+@media (min-width: 900px) {
+    body {
+        /* margin-left: auto;
+        margin-right: auto; */
+        padding: 0 100px;
+        /* correct for this screen size, but not responsive */
+    }
+    .outer-container {
+        display: flex;
+        justify-content: center;
+        /* max-width: 1200px; */
+        /* when you set max width, there is forced gap on right, why? */
+    }
+    header, main {
+        flex: 1;
+        box-sizing: border-box;
+        /* both containers only remain the same size, if you combine both border box + max-width 50% restriction on main, otherwise added padding pushes out main disproportionately */
+    }
+    header {
+        order: 1;
+        background-image:
+        linear-gradient(hsla(277, 100%, 40%, 0.5), hsla(277, 100%, 40%, 0.5)),
+        url(./images/image-header-desktop.jpg);
+    }
+    main {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        padding: 60px 80px;
+        width: 100%;
+        max-width: 50%;
+        gap: 40px;
+        align-items: center;
+        justify-content: center;
+
+    }
+    h1, article {
+        grid-column: 1 / span 3;
+        text-align: left;
+    }
+    h1 {
+        font-size:2.1rem;
+    }
+    article {
+        margin-bottom: 40px;
+    }
+
+    h1, article, .stats {
+        max-width: 80%;
+        min-width: 60px;
+        /* if you set this much smaller 10px it helps, but then it falls out of containers, isntead of 60px */
+        overflow-wrap: normal;
+    }
+}
+
+
+/* questions and issues
+    just can't get the responsive to work when shrinking it down to nearly 500px
+    - container aligns too far left, instead of centre
+    - container + text pushed outside of the box, rather than staying inside and flowing downwards
+    - can't seem to get it to do that, regardless of what I try
+    - unless I cheat with media query??
+
+    - also the media query image looks strange until much larger size, but then the text looks strange. can't get both to look good, unless you can somehow set the image to display differently?
+*/
+
